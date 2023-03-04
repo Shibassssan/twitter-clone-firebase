@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useCallback, useState } from 'react';
 import { addDoc, getDoc } from 'firebase/firestore';
-import { db, storage } from 'Firebase';
+// import { db, storage } from '~/src/Firebase';
 import { Input,Button } from '../App';
 
 
