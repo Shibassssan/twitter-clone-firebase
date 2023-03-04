@@ -1,10 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useCallback, useState } from "react";
 import { cx } from "@emotion/css";
-import { style, buttonStyle, inputStyle } from "./style";
+import { style, inputStyle } from "./style";
 import { Footer } from "../Footer";
 import { Header } from "../Header";
 // import { Top } from "../Top";
+import { Button } from "../common/Button";
 import {
   addDoc,
   getDocs,
@@ -38,25 +39,6 @@ export const Input: FC<{
   );
 };
 
-export const Button: FC<{
-  label: string;
-  onClick?: () => void;
-  disabled?: boolean;
-}> = ({ label, onClick = () => {}, disabled = false }) => {
-  // console.log('disabled', disabled);
-  return (
-    <div css={buttonStyle}>
-      <button
-        className="button"
-        type="submit"
-        onClick={onClick}
-        disabled={disabled}
-      >
-        <span>{label}</span>
-      </button>
-    </div>
-  );
-};
 
 type Tweets = {
   tweet: string;
