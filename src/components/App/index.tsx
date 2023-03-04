@@ -1,11 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useCallback, useState } from "react";
 import { cx } from "@emotion/css";
-import { style, inputStyle } from "./style";
+import { style, } from "./style";
 import { Footer } from "../Footer";
 import { Header } from "../Header";
 // import { Top } from "../Top";
 import { Button } from "../common/Button";
+import { Input } from "../common/Input";
 import {
   addDoc,
   getDocs,
@@ -18,26 +19,6 @@ import {
 import app, { db, storage } from "../../Firebase";
 import { TopStyle } from "../Top/style";
 import { useEffect } from "react";
-
-export const Input: FC<{
-  label: string;
-}> = ({ label }) => {
-  const [isFocus, setIsFocus] = useState(false);
-  const handleFocus = useCallback(() => setIsFocus(true), []);
-  const handleBlur = useCallback(() => setIsFocus(false), []);
-
-  return (
-    <div className={cx({ "add-focus": isFocus })} css={inputStyle}>
-      <input
-        type="text"
-        autoComplete="off"
-        onBlur={() => handleBlur()}
-        onFocus={() => handleFocus()}
-      />
-      <label>{label}</label>
-    </div>
-  );
-};
 
 
 type Tweets = {
