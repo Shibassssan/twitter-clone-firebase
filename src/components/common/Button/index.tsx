@@ -1,14 +1,15 @@
+/** @jsxImportSource @emotion/react */
 import { FC } from 'react';
-import { ButtonStyle } from './styles';
+import { ButtonStyle, type BackgroundColorType } from './styles';
 
 export const Button: FC<{
   label: string;
+  type: BackgroundColorType;
   onClick?: () => void;
   disabled?: boolean;
-}> = ({ label, onClick = () => {}, disabled = false }) => {
-  // console.log('disabled', disabled);
+}> = ({ label, onClick = () => {}, disabled = false, type }) => {
   return (
-    <div css={ButtonStyle}>
+    <div css={ButtonStyle(type)}>
       <button
         className="button"
         type="submit"

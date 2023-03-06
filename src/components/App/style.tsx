@@ -7,6 +7,7 @@ export const style = css`
 
   main {
     flex: auto;
+    margin: 0 0 50px;
   }
 `;
 
