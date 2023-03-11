@@ -1,11 +1,13 @@
+/** @jsxImportSource @emotion/react */
 import { FC, useCallback, useContext } from 'react';
 import { Input } from '../common/Input';
 import { Button } from '../common/Button';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, provider } from '../../Firebase';
 import { UserContext, LoginContext } from '../App';
+import { LoginStyle } from './styles';
 
-const Login: FC = () => {
+export const Login: FC = () => {
   const { setUserInfo } = useContext(UserContext);
   const { setIsLogin } = useContext(LoginContext);
 
@@ -26,17 +28,12 @@ const Login: FC = () => {
 
   const login = useCallback(async () => {}, []);
   return (
-    <div css={{ padding: '0px 15px', display: 'grid', rowGap: '35px' }}>
+    <div css={LoginStyle}>
       <div>
         <h1>Twitter Clone</h1>
       </div>
       <section
-        css={{
-          padding: '0px',
-          borderBottom: '1px solid #eee',
-          display: 'grid',
-          rowGap: '20px',
-        }}
+        className='emailLogin'
       >
         <div>
           <Input label={'メールアドレス'} />
@@ -50,13 +47,9 @@ const Login: FC = () => {
         <div></div>
       </section>
       <div
-        css={{
-          display: 'grid',
-          rowGap: '15px',
-          borderBottom: '1px solid #eee',
-        }}
+        className='googleLogin'
       >
-        <div css={{ padding: '0' }}>
+        <div>
           <p>Googleでログイン</p>
         </div>
         <Button
@@ -66,14 +59,13 @@ const Login: FC = () => {
         />
         <div></div>
       </div>
-      <div css={{ margin: '0' }}>
+      <div>
         <Button
           label={'アカウント新規登録'}
-          onClick={loginWithGoogle}
+          onClick={() => {}}
           type={'other'}
         />
       </div>
     </div>
   );
 };
-
