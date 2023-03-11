@@ -30,18 +30,20 @@ export const Login: FC = () => {
       if (!Regex.emailFormat.test(inputEmail)) {
         setEmailErrors((prev) => [...prev, ERROR_MESSAGE.EMAIL_FORMAT_ERROR]);
       }
-      if (emailErrors.length) setIsEmailError(true);
+    },
+    []
+  );
+
+  const onEmailChange = useCallback(
+    (inputEmail: string) => {
+      // reset
+      setEmailErrors([]);
+      checkInputEmail(inputEmail);
+      setIsEmailError(!!emailErrors.length);
+      setEmail(inputEmail);
     },
     [emailErrors]
   );
-
-  const onEmailChange = useCallback((inputEmail: string) => {
-    // reset
-    setEmailErrors([]);
-    /** @todo validation処理を追加する */
-    checkInputEmail(inputEmail)
-    setEmail(inputEmail);
-  }, []);
 
   const checkInputPassword = useCallback((inputPassword: string) => {
     if (!inputPassword) setPasswordErrors((prev) => [...prev, ERROR_MESSAGE.REQUIRE]);
@@ -56,14 +58,14 @@ export const Login: FC = () => {
     if (!Regex.containsSymbol.test(inputPassword))
       setPasswordErrors((prev) => [...prev, ERROR_MESSAGE.SYMBOL_REQUIRED]);
 
-    if (passwordErrors.length) setIsPasswordError(true)
   }, [passwordErrors])
 
   const onPasswordChange = useCallback((inputPassword: string) => {
     setPasswordErrors([]);
     checkInputPassword(inputPassword);
+    setIsPasswordError(!!passwordErrors.length);
     setPassword(inputPassword);
-  }, []);
+  }, [passwordErrors]);
 
   const loginWithGoogle = async () => {
     try {
