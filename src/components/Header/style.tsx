@@ -12,6 +12,8 @@ export const headerStyle = css`
 export const sideMenuStyle = css`
   position: relative;
   height: inherit;
+  align-items: center;
+  display: flex;
   > div {
     width: 60px;
     padding: 25px 0;
@@ -30,4 +32,10 @@ export const searchStyle = css`
   width: 60px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  position:relative;
+  > div {
+    position: relative;
+    top: 3px;
+  }
 `;
