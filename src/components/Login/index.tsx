@@ -17,10 +17,10 @@ export const Login: FC = () => {
   const [email, setEmail] = useState("");
   const [isEmailError, setIsEmailError] = useState(false);
   const [emailErrors, setEmailErrors] = useState<string[]>([]);
-  
+
   const [password, setPassword] = useState("");
-  const [passwordErrors, setPasswordErrors] = useState<string[]>([]);
   const [isPasswordError, setIsPasswordError] = useState(false);
+  const [passwordErrors, setPasswordErrors] = useState<string[]>([]);
 
   const checkInputEmail = useCallback(
     (inputEmail: string) => {
@@ -30,7 +30,7 @@ export const Login: FC = () => {
       if (!Regex.emailFormat.test(inputEmail)) {
         setEmailErrors((prev) => [...prev, ERROR_MESSAGE.EMAIL_FORMAT_ERROR]);
       }
-      if (emailErrors.length > 0) setIsEmailError(true);
+      if (emailErrors.length) setIsEmailError(true);
     },
     [emailErrors]
   );
@@ -44,7 +44,19 @@ export const Login: FC = () => {
   }, []);
 
   const checkInputPassword = useCallback((inputPassword: string) => {
-    if(passwordErrors.length > 0) setIsPasswordError(true)
+    if (!inputPassword) setPasswordErrors((prev) => [...prev, ERROR_MESSAGE.REQUIRE]);
+    if (!Regex.containsAlphanumeric.test(inputPassword)) {
+      setPasswordErrors((prev) => [...prev, ERROR_MESSAGE.INVALID_CHARACTER]);
+    }
+    if (inputPassword.length < 7) setPasswordErrors((prev) => [...prev, ERROR_MESSAGE.MINIMUM_LENGTH]);
+    if (!Regex.containsAlphabet.test(inputPassword)) setPasswordErrors((prev) => [...prev, ERROR_MESSAGE.ALPHABET_REQUIRED]);
+    if (!Regex.containsNumber.test(inputPassword)) setPasswordErrors((prev) => [...prev, ERROR_MESSAGE.DIGIT_REQUIRED]);
+    if (!Regex.containsLowerUpper.test(inputPassword))
+      setPasswordErrors((prev) => [...prev, ERROR_MESSAGE.CASE_REQUIRED]);
+    if (!Regex.containsSymbol.test(inputPassword))
+      setPasswordErrors((prev) => [...prev, ERROR_MESSAGE.SYMBOL_REQUIRED]);
+
+    if (passwordErrors.length) setIsPasswordError(true)
   }, [passwordErrors])
 
   const onPasswordChange = useCallback((inputPassword: string) => {
@@ -69,6 +81,7 @@ export const Login: FC = () => {
   };
 
   const login = useCallback(async () => {
+    if (isEmailError || isPasswordError) return;
     // console.log('email', email);
     // console.log('password', password);
   }, [email, password]);
