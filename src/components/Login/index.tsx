@@ -1,15 +1,57 @@
 /** @jsxImportSource @emotion/react */
-import { FC, useCallback, useContext } from 'react';
-import { Input } from '../common/Input';
-import { Button } from '../common/Button';
-import { signInWithPopup } from 'firebase/auth';
-import { auth, provider } from '../../Firebase';
-import { UserContext, LoginContext } from '../App';
-import { LoginStyle } from './styles';
+import { FC, useCallback, useContext, useState } from "react";
+import { Input } from "../common/Input";
+import { Button } from "../common/Button";
+import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
+import { auth, provider } from "../../Firebase";
+import { UserContext, LoginContext } from "../App";
+import { LoginStyle } from "./styles";
+import { Regex, ERROR_MESSAGE } from "../../define";
 
 export const Login: FC = () => {
   const { setUserInfo } = useContext(UserContext);
   const { setIsLogin } = useContext(LoginContext);
+
+  /** @TODO ここら辺の処理をStoreに移行・集結させる */
+
+  const [email, setEmail] = useState("");
+  const [isEmailError, setIsEmailError] = useState(false);
+  const [emailErrors, setEmailErrors] = useState<string[]>([]);
+  
+  const [password, setPassword] = useState("");
+  const [passwordErrors, setPasswordErrors] = useState<string[]>([]);
+  const [isPasswordError, setIsPasswordError] = useState(false);
+
+  const checkInputEmail = useCallback(
+    (inputEmail: string) => {
+      if (!inputEmail) {
+        setEmailErrors((prev) => [...prev, ERROR_MESSAGE.REQUIRE]);
+      }
+      if (!Regex.emailFormat.test(inputEmail)) {
+        setEmailErrors((prev) => [...prev, ERROR_MESSAGE.EMAIL_FORMAT_ERROR]);
+      }
+      if (emailErrors.length > 0) setIsEmailError(true);
+    },
+    [emailErrors]
+  );
+
+  const onEmailChange = useCallback((inputEmail: string) => {
+    // reset
+    setEmailErrors([]);
+    /** @todo validation処理を追加する */
+    checkInputEmail(inputEmail)
+    setEmail(inputEmail);
+  }, []);
+
+  const checkInputPassword = useCallback((inputPassword: string) => {
+    if(passwordErrors.length > 0) setIsPasswordError(true)
+  }, [passwordErrors])
+
+  const onPasswordChange = useCallback((inputPassword: string) => {
+    setPasswordErrors([]);
+    checkInputPassword(inputPassword);
+    setPassword(inputPassword);
+  }, []);
 
   const loginWithGoogle = async () => {
     try {
@@ -19,51 +61,63 @@ export const Login: FC = () => {
       if (displayName)
         setUserInfo({
           name: displayName,
-          avator: photoURL || '',
+          avator: photoURL || "",
         });
     } catch (error) {
-      console.error('error', error);
+      console.error("error", error);
     }
   };
 
-  const login = useCallback(async () => {}, []);
+  const login = useCallback(async () => {
+    // console.log('email', email);
+    // console.log('password', password);
+  }, [email, password]);
+
   return (
     <div css={LoginStyle}>
       <div>
         <h1>Twitter Clone</h1>
       </div>
-      <section
-        className='emailLogin'
-      >
+      <section className="emailLogin">
         <div>
-          <Input label={'メールアドレス'} />
+          <Input
+            label={"メールアドレス"}
+            value={email}
+            onChangeCallback={onEmailChange}
+            isError={isEmailError}
+            errorMessages={emailErrors}
+          />
         </div>
         <div>
-          <Input label={'パスワード'} />
+          <Input
+            label={"パスワード"}
+            value={password}
+            onChangeCallback={onPasswordChange}
+            isError={isPasswordError}
+            errorMessages={passwordErrors}
+          />
         </div>
         <div>
-          <Button label={'ログイン'} onClick={login} type={'primary'} />
+          <Button label={"ログイン"} onClick={login} type={"primary"} />
         </div>
         <div></div>
       </section>
-      <div
-        className='googleLogin'
-      >
+      <div className="googleLogin">
         <div>
           <p>Googleでログイン</p>
         </div>
         <Button
-          label={'Googleでログイン'}
+          label={"Googleでログイン"}
           onClick={loginWithGoogle}
-          type={'secondary'}
+          type={"secondary"}
         />
         <div></div>
       </div>
       <div>
         <Button
-          label={'アカウント新規登録'}
+          label={"アカウント新規登録"}
           onClick={() => {}}
-          type={'other'}
+          type={"other"}
         />
       </div>
     </div>
