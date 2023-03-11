@@ -1,12 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useCallback, useContext, useState } from "react";
+import { getAuth } from 'firebase/auth';
 import { Input } from "../common/Input";
 import { Button } from "../common/Button";
-import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
-import { auth, provider } from "../../Firebase";
-import { UserContext, LoginContext } from "../App";
+import { signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import app, { provider } from "../../Firebase";
+import { UserContext, LoginContext } from "../../pages";
 import { LoginStyle } from "./styles";
 import { Regex, ERROR_MESSAGE } from "../../define";
+import Cookie from 'js-cookie';
+import { COOKIES } from "../../define";
+
+const auth = getAuth(app);
 
 export const Login: FC = () => {
   const { setUserInfo } = useContext(UserContext);
@@ -77,6 +82,8 @@ export const Login: FC = () => {
           name: displayName,
           avator: photoURL || "",
         });
+        // @ts-ignore
+      Cookie.set(COOKIES.MEMBER, user.accessToken);
     } catch (error) {
       console.error("error", error);
     }
@@ -84,8 +91,14 @@ export const Login: FC = () => {
 
   const login = useCallback(async () => {
     if (isEmailError || isPasswordError) return;
-    // console.log('email', email);
-    // console.log('password', password);
+    console.log('email', email);
+    console.log('password', password);
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      console.log('result', result);
+    } catch (error) {
+      console.error('error', error)
+    }
   }, [email, password]);
 
   return (

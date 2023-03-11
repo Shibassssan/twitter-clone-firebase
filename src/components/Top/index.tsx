@@ -16,18 +16,23 @@ import {
   doc,
   onSnapshot,
 } from 'firebase/firestore';
-import app, { db, storage, auth, provider } from '../../Firebase';
+import app, { db } from '../../Firebase';
 import {
   signOut,
+  getAuth
 } from 'firebase/auth';
 import { TopStyle } from '../Top/style';
-import { UserContext, LoginContext } from '../App'
+import { UserContext, LoginContext } from '../../pages'
+import Cookies from 'js-cookie';
+import { COOKIES } from '~/define';
 
 type Tweets = {
   tweet: string;
   userName: string;
   timestamp: FieldValue;
 };
+
+const auth = getAuth(app);
 
 export const Top: FC = () => {
   const { userInfo, setUserInfo } = useContext(UserContext);
@@ -75,6 +80,7 @@ export const Top: FC = () => {
         avator: '',
       });
       setIsLogin(false);
+      Cookies.remove(COOKIES.MEMBER)
     } catch (error) {
       console.error('error', error);
     }

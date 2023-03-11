@@ -11,6 +11,8 @@ import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { Top } from '../components/Top';
 import { Login } from '../components/Login';
+import Cookies from 'js-cookie';
+import { COOKIES } from '~/define';
 
 type LoginContextType = {
   isLogin: boolean;
@@ -45,6 +47,11 @@ const App = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [userInfo, setUserInfo] = useState(defaultUserInfo);
 
+  useEffect(() => {
+    const hasMemberCookie = Cookies.get(COOKIES.MEMBER)
+    if (!!hasMemberCookie) setIsLogin(true);
+  }, []);
+
   return (
     <>
       <Header />
@@ -56,9 +63,6 @@ const App = () => {
         </LoginContext.Provider>
       </main>
       <Footer />
-      {/* <head></head>
-      <body>
-      </body> */}
     </>
   );
 };

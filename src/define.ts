@@ -19,3 +19,6 @@ export const Regex = {
   containsSymbol: /[-!"#$%&'()*+,./:;<=>?@[\\\]^_`{|}~]+/,
 };
 
+export const COOKIES = {
+  MEMBER: 'member'
+}
