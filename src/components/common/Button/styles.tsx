@@ -61,13 +61,3 @@ export const ButtonStyle = (type: BackgroundColorType) => css`
     border: none;
   }
 `;
-
-    // appearance: none;
-    // /* border: navajowhite; */
-    // background: no-repeat;
-    // outline: none;
-    // cursor: pointer;
-    // /* border: navajowhite; */
-    // width: 100%;
-    // height: auto;
-    // min-height: 80px;
