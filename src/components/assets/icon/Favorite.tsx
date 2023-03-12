@@ -1,4 +1,4 @@
-export const FavariteIcon = () => (
+export const FavoriteIcon = () => (
   <svg
     viewBox="0 0 24 24"
     width={24}
