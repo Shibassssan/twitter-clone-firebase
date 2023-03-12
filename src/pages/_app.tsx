@@ -1,7 +1,8 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import '../styles/global.css';
+import { global } from '../styles/global';
 import '../Firebase';
+import { Global } from '@emotion/react';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -10,6 +11,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <title>Twitter Clone</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
+      <Global styles={global} />
       <Component {...pageProps} />
     </>
   );
