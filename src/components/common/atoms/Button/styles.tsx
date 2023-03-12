@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { Color } from '../../../Style';
+import { Color } from '../../../../Style';
 
 export type BackgroundColorType = 'primary' | 'secondary' | 'other';
 
