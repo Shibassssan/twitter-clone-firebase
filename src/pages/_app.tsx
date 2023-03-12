@@ -1,8 +1,7 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import '../styles/global';
+import '../styles/global.css';
 import '../Firebase';
-
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (

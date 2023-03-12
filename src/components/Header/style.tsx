@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 
 export const headerStyle = css`
-  height: 60px;
+  height: 48px;
   display: flex;
   z-index: 3;
   box-shadow: 0 4px 2px -2px rgb(0 0 0 / 20%);
@@ -36,6 +36,6 @@ export const searchStyle = css`
   position:relative;
   > div {
     position: relative;
-    top: 3px;
+    top: 5px;
   }
 `;

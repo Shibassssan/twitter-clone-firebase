@@ -1,8 +1,9 @@
 import { css } from '@emotion/react';
 
 export const footerStyle = css`
-  margin-top: 20px;
   padding: 30px;
+  background: #0051e0;
+  margin-top: 20px;
   background: grey;
 
   > div {

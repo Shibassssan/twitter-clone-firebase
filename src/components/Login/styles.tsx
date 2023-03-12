@@ -4,6 +4,7 @@ export const LoginStyle = css`
   padding: 0 15px;
   display: grid;
   row-gap: 35px;
+  margin-top: 15px;
 
   & .emailLogin {
     padding: 0;
