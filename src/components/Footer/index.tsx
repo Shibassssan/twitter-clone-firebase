@@ -1,21 +1,29 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useCallback, useState } from 'react';
 import { footerStyle } from './style';
+import { Home as HomeIcon } from '../assets/icon/Home';
+import { Search as SearchIcon } from '../assets/icon/Search';
+import { Notice as NoticeIcon } from '../assets/icon/Notice';
+import { Mail as MailIcon } from '../assets/icon/Mail';
+
 
 export const Footer: FC = () => {
   return (
     <footer css={footerStyle}>
-      <div>
-        <p>[Footer]</p>
-        <p>[Twitter Clone]</p>
-      </div>
       <nav>
-        <h4>About</h4>
-        <ul>
-          <li>よくある質問</li>
-          <li>利用規約</li>
-          <li>プライバシーポリシー</li>
-        </ul>
+        {/* TODO リンクに置き換える */}
+        <div>
+          <HomeIcon />
+        </div>
+        <div>
+          <SearchIcon />
+        </div>
+        <div>
+          <NoticeIcon />
+        </div>
+        <div>
+          <MailIcon />
+        </div>
       </nav>
     </footer>
   );
