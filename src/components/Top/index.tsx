@@ -6,7 +6,7 @@ import {
   useEffect,
   useContext,
 } from 'react';
-import { Button } from '../common/Button';
+import { Button } from '../common/atoms/Button';
 import {
   addDoc,
   getDocs,
@@ -21,10 +21,11 @@ import {
   signOut,
   getAuth
 } from 'firebase/auth';
+import Cookies from 'js-cookie';
+import { COOKIES } from '~/src/define';
 import { TopStyle } from '../Top/style';
 import { UserContext, LoginContext } from '../../pages'
-import Cookies from 'js-cookie';
-import { COOKIES } from '~/define';
+import { TweetCard } from '~/src/components/common/organisms/TweetCard';
 
 type Tweets = {
   tweet: string;
@@ -92,15 +93,13 @@ export const Top: FC = () => {
 
   return (
     <div className="" css={TopStyle}>
-      <div css={{ margin: '10px' }}>
+      {/* <div css={{ margin: '10px' }}>
         <div>
           <img
             src={userInfo.avator}
             css={{ borderRadius: '50%', width: '60px', height: '60px' }}
           />
         </div>
-        {/* inputではなく、textareaを使う */}
-        {/* <Input label={'ツイート'} /> */}
         <textarea
           name="ツイート"
           maxLength={150}
@@ -119,20 +118,16 @@ export const Top: FC = () => {
       </div>
       <div css={{ margin: '10px' }}>
         <Button label={'ログアウト'} onClick={logout} type={'other'} />
-      </div>
-      <section className="timeline">
-        <h2>タイムライン</h2>
         <div>
           <p>ようこそ、{userInfo.name}さん</p>
         </div>
+      </div> */}
+      <section className="timeline">
         <div>
           {tweets.map((tweet, index) => (
             <div key={index}>
               {tweet.userName && tweet.tweet && (
-                <>
-                  <div>{tweet.userName}</div>
-                  <div>{tweet.tweet}</div>
-                </>
+                  <TweetCard userName={tweet.userName} text={tweet.tweet} />
               )}
             </div>
           ))}

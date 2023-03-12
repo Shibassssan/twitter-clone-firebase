@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { Color } from '~/src/Style';
 
 export const TopStyle = css`
   & .timeline {
