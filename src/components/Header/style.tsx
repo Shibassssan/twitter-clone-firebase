@@ -1,41 +1,29 @@
 import { css } from '@emotion/react';
+import { Color } from '~/src/Style';
 
 export const headerStyle = css`
-  height: 48px;
-  display: flex;
+  height: 50px;
   z-index: 3;
-  box-shadow: 0 4px 2px -2px rgb(0 0 0 / 20%);
+  box-shadow: 0 4px 2px -2px ${Color.Border};
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
   align-items: center;
-  justify-content: space-between;
-`;
+  padding: 0 15px;
 
-export const sideMenuStyle = css`
-  position: relative;
-  height: inherit;
-  align-items: center;
-  display: flex;
-  > div {
-    width: 60px;
-    padding: 25px 0;
-    > span {
-      display: block;
-      width: 20px;
-      height: 2px;
-      margin: 0 auto 2px;
-      background: #000;
-      transition: all 0.2s ease-in-out 0s;
-    }
+  > section {
+    height: inherit;
+    display: flex;
+    align-items: center;
   }
-`;
 
-export const searchStyle = css`
-  width: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position:relative;
-  > div {
-    position: relative;
-    top: 5px;
+  & .logo {
+    height: inherit;
+    display: flex;
+    align-items: center;
+    > svg {
+      fill: ${Color.Primary};
+      width: 30px;
+      height:30px;
+    }
   }
 `;
