@@ -12,7 +12,7 @@ import { Header } from '../components/Header';
 import { Top } from '../components/Top';
 import { Login } from '../components/Login';
 import Cookies from 'js-cookie';
-import { COOKIES } from '~/define';
+import { COOKIES } from '~/src/define';
 
 type LoginContextType = {
   isLogin: boolean;

@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useCallback, useContext, useState } from "react";
 import { getAuth } from 'firebase/auth';
-import { Input } from "../common/Input";
-import { Button } from "../common/Button";
+import { Input } from "../common/atoms/Input";
+import { Button } from "../common/atoms/Button";
 import { signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import app, { provider } from "../../Firebase";
 import { UserContext, LoginContext } from "../../pages";
