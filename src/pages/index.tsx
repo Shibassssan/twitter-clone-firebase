@@ -9,7 +9,7 @@ import {
 } from 'react';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
-import { Top } from '../components/Top';
+import { Top as TopContainers } from '../components/Top';
 import { Login } from '../components/Login';
 import Cookies from 'js-cookie';
 import { COOKIES } from '~/src/define';
@@ -43,7 +43,7 @@ export const UserContext = createContext<UserContextType>({
 });
 
 
-const App = () => {
+const Top:FC = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [userInfo, setUserInfo] = useState(defaultUserInfo);
 
@@ -58,7 +58,7 @@ const App = () => {
       <main>
         <LoginContext.Provider value={{ isLogin, setIsLogin }}>
           <UserContext.Provider value={{ userInfo, setUserInfo }}>
-            <section>{isLogin ? <Top /> : <Login />}</section>
+            <section>{isLogin ? <TopContainers /> : <Login />}</section>
           </UserContext.Provider>
         </LoginContext.Provider>
       </main>
@@ -67,4 +67,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Top;
