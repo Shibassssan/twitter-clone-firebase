@@ -93,35 +93,6 @@ export const Top: FC = () => {
 
   return (
     <div className="" css={TopStyle}>
-      {/* <div css={{ margin: '10px' }}>
-        <div>
-          <img
-            src={userInfo.avator}
-            css={{ borderRadius: '50%', width: '60px', height: '60px' }}
-          />
-        </div>
-        <textarea
-          name="ツイート"
-          maxLength={150}
-          placeholder="ツイートする"
-          value={text}
-          onChange={(e) => onChangeText(e)}
-        />
-      </div>
-      <div css={{ margin: '10px' }}>
-        <Button
-          label={'投稿'}
-          onClick={sendTweet}
-          disabled={!text}
-          type={'primary'}
-        />
-      </div>
-      <div css={{ margin: '10px' }}>
-        <Button label={'ログアウト'} onClick={logout} type={'other'} />
-        <div>
-          <p>ようこそ、{userInfo.name}さん</p>
-        </div>
-      </div> */}
       <section className="timeline">
         <div>
           {tweets.map((tweet, index) => (
