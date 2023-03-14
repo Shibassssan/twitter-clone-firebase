@@ -1,6 +1,11 @@
 import { css } from '@emotion/react';
 
 export const global = css`
+  @font-face {
+    font-family: 'Segoe UI', Meiryo, system-ui, -apple-system,
+      BlinkMacSystemFont, sans-serif;
+    src: url('../../public/fonts/Chirp-Regular.80fda27a.woff2') format('woff');
+  }
   html,
   body {
     margin: 0;
