@@ -14,7 +14,7 @@ export const TweetCard: FC<{
   return (
     <article css={TweetCardStyle}>
       <div className=''>
-        <Image width={30} height={30} src={avator} alt={'ユーザー画像'} />
+        <Image width={46} height={46} src={avator} alt={'ユーザー画像'} />
       </div>
       <div>
         <div className='user'>
