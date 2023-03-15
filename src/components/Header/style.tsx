@@ -14,6 +14,12 @@ export const headerStyle = css`
     height: inherit;
     display: flex;
     align-items: center;
+
+    > div {
+      height: inherit;
+      display: flex;
+      align-items: center;
+    }
   }
 
   & .logo {
@@ -23,7 +29,7 @@ export const headerStyle = css`
     > svg {
       fill: ${Color.Primary};
       width: 30px;
-      height:30px;
+      height: 30px;
     }
   }
 `;
