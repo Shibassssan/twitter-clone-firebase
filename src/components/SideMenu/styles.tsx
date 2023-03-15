@@ -2,17 +2,26 @@ import { css } from '@emotion/react';
 import { Color, Font } from '~/src/Style';
 
 export const style = css`
-  background-color: rgba(0, 0, 0, 0.4);
+  transition: 0.25s ease all;
   position: fixed;
   top: 0px;
   right: 0px;
   left: 0px;
   bottom: 0px;
   z-index: 5;
-  transform: 250ms ease background-color;
+  opacity: 0;
+  visibility: hidden;
+  &.open {
+    visibility: visible;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
 
   > nav {
+    transition: 0.25s ease transform;
+    transform: translateX(-100%);
     min-width: 280px;
+    max-width: 70%;
     height: 100vh;
     top: 0px;
     position: fixed;
@@ -20,6 +29,9 @@ export const style = css`
     background: #fff;
     box-shadow: rgb(101 119 134 / 20%) 0px 0px 8px,
       rgb(101 119 134 / 25%) 0px 1px 3px 1px;
+    &.open {
+      transform: translateX(0);
+    }
   }
 
   & .navigationHeader {
@@ -37,6 +49,10 @@ export const style = css`
 
   & .menuIcon {
     min-width: 50px;
+    outline: 0;
+    appearance: none;
+    border: none;
+    background: #ffff;
     &Line {
       width: 20px;
       height: 2px;

@@ -1,29 +1,32 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useCallback, useState } from 'react';
+import { cx } from '@emotion/css';
 import { AccordionIcon } from '../assets/icon/Accordion';
 import avator from 'src/components/assets/images/avator.png';
 import { style } from './styles';
 import Image from 'next/image';
 import { MoreIcon } from '../assets/icon/MoreIcon';
 
-export const SideMenu: FC = () => {
+export const SideMenu: FC<{
+  isOpen: boolean,
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({ isOpen, setIsOpen}) => {
   return (
-    <div css={style}>
-      <nav>
+    <div className={cx('sideMenu', { 'open': isOpen})} css={style}>
+      <nav className={cx({ 'open': isOpen})} >
         <section className="navigationHeader">
           <div>
             <h2>アカウント情報</h2>
           </div>
-          <div
-            role="button"
-            tabIndex={0}
+          <button
             aria-label="メニュー開閉ボタン"
             className="menuIcon"
+            onClick={() => setIsOpen(false)}
           >
             <span className="menuIconLine"></span>
             <span className="menuIconLine"></span>
             <span className="menuIconLine"></span>
-          </div>
+          </button>
         </section>
         <section className="navigationBody">
           <div className="accountInfo">
@@ -80,4 +83,4 @@ export const SideMenu: FC = () => {
       </nav>
     </div>
   );
-}
+};
