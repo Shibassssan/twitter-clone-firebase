@@ -10,7 +10,8 @@ import { MoreIcon } from '../assets/icon/MoreIcon';
 export const SideMenu: FC<{
   isOpen: boolean,
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ isOpen, setIsOpen}) => {
+}> = ({ isOpen, setIsOpen }) => {
+  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
   return (
     <div className={cx('sideMenu', { 'open': isOpen})} css={style}>
       <nav className={cx({ 'open': isOpen})} >
@@ -76,8 +77,19 @@ export const SideMenu: FC<{
             </li>
           </ul>
           <div className="accordion">
-            <div>設定とサポート</div>
-            <AccordionIcon />
+            <div className={cx('setting', {'open': isAccordionOpen })} onClick={() => setIsAccordionOpen((prev) => !prev)}>
+              <div>設定とサポート</div>
+              <AccordionIcon />
+            </div>
+            {isAccordionOpen && (
+              <section className='settingDetail'>
+                <div>設定とプライバシー</div>
+                <div>ヘルプセンター</div>
+                <div>データセーバー</div>
+                <div>表示</div>
+                <div>ログアウト</div>
+              </section>
+            )}
           </div>
         </section>
       </nav>

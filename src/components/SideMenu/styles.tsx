@@ -47,6 +47,12 @@ export const style = css`
     }
   }
 
+  & .navigationBody {
+    overflow-y: scroll;
+    padding-bottom: 50px;
+    height: calc(100svh - 50px);
+  }
+
   & .menuIcon {
     min-width: 50px;
     outline: 0;
@@ -146,7 +152,7 @@ export const style = css`
     }
   }
 
-  & .accordion {
+  & .setting {
     padding: 15px;
     display: flex;
     justify-content: space-between;
@@ -156,6 +162,20 @@ export const style = css`
       display: block;
       width: 24px;
       height: 24px;
+      transition: 0.2s ease transform;
+    }
+
+    &.open {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    &Detail {
+      > div {
+        padding: 11px;
+        font-size: ${Font.Size.Default}px;
+      }
     }
   }
 `;
