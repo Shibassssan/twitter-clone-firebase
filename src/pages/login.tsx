@@ -8,12 +8,9 @@ import { Login as LoginContainer } from '../components/Login';
 const Login: FC = () => {
   return (
     <>
-      {/* <Header />
       <main>
-        <div></div>
+        <LoginContainer />
       </main>
-      <Footer /> */}
-      <LoginContainer />
     </>
   );
 };

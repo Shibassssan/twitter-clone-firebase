@@ -1,17 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import { FC } from 'react';
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
+import { RegisterContainer } from '../components/Register';
 
 /** 新規登録ページ */
 const Register: FC = () => {
   return (
     <>
-      <Header />
       <main>
-        <div></div>
+        <RegisterContainer />
       </main>
-      <Footer />
     </>
   );
 };
