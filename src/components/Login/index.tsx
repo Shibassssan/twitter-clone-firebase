@@ -8,9 +8,11 @@ import app, { provider } from "../../Firebase";
 import { UserContext, LoginContext } from "../../pages";
 import { LoginStyle } from "./styles";
 import Cookie from 'js-cookie';
-import { COOKIES } from "../../define";
 import Link from 'next/link';
 import { useForm } from "~/src/hooks/useForm";
+import Cookies from 'js-cookie';
+import { COOKIES } from '~/src/define';
+import { useRouter } from 'next/router';
 
 const auth = getAuth(app);
 
@@ -29,6 +31,8 @@ export const Login: FC = () => {
     onPasswordChange,
   } = useForm();
 
+  const router = useRouter();
+
   const loginWithGoogle = async () => {
     try {
       const { user } = await signInWithPopup(auth, provider);
@@ -46,13 +50,16 @@ export const Login: FC = () => {
     }
   };
 
+  /** メールアドレスによるログイン処理 */
   const login = useCallback(async () => {
     if (isEmailError || isPasswordError) return;
-    console.log('email', email);
-    console.log('password', password);
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
-      console.log('result', result);
+      const token = await result.user.getIdToken();
+      if (!token) throw new Error();
+      Cookies.set(COOKIES.MEMBER, token);
+      // topに遷移
+      router.push('/');
     } catch (error) {
       console.error('error', error)
     }

@@ -6,7 +6,7 @@ import { Button } from '../common/atoms/Button';
 import {
   createUserWithEmailAndPassword,
 } from 'firebase/auth';
-import app, { provider } from '../../Firebase';
+import app from '../../Firebase';
 
 import { style } from './styles';
 import { useForm } from '~/src/hooks/useForm';
