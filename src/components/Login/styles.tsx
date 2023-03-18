@@ -1,14 +1,15 @@
 import { css } from '@emotion/react';
+import { Color } from '~/src/Style';
 
 export const LoginStyle = css`
   padding: 0 15px;
   display: grid;
   row-gap: 35px;
   margin-top: 15px;
+  padding: 0 32px;
 
   & .emailLogin {
     padding: 0;
-    border-bottom: 1px solid #eee;
     display: grid;
     row-gap: 20px;
   }
@@ -16,6 +17,12 @@ export const LoginStyle = css`
   & .googleLogin {
     display: grid;
     row-gap: 15px;
-    border-bottom: 1px solid #eee;
+  }
+
+  & .registerLink {
+    font-size: 14px;
+    span {
+      color: ${Color.Primary};
+    }
   }
 `;

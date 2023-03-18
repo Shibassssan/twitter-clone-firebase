@@ -10,6 +10,7 @@ import { LoginStyle } from "./styles";
 import { Regex, ERROR_MESSAGE } from "../../define";
 import Cookie from 'js-cookie';
 import { COOKIES } from "../../define";
+import Link from 'next/link';
 
 const auth = getAuth(app);
 
@@ -104,7 +105,7 @@ export const Login: FC = () => {
   return (
     <div css={LoginStyle}>
       <div>
-        <h1>Twitter Clone</h1>
+        <h1>Twitterにログイン</h1>
       </div>
       <section className="emailLogin">
         <div>
@@ -131,22 +132,28 @@ export const Login: FC = () => {
         <div></div>
       </section>
       <div className="googleLogin">
-        <div>
-          <p>Googleでログイン</p>
-        </div>
         <Button
           label={"Googleでログイン"}
           onClick={loginWithGoogle}
-          type={"secondary"}
+          type={"other"}
         />
-        <div></div>
       </div>
-      <div>
+      <div className="passwordReset">
         <Button
-          label={"アカウント新規登録"}
+          label={"パスワードを忘れた場合はこちら"}
           onClick={() => {}}
           type={"other"}
         />
+      </div>
+      <div className="registerLink">
+        <div>
+          アカウントをお持ちでない場合は
+          <span>
+            <Link href='/register'>
+              登録
+            </Link>
+          </span>
+        </div>
       </div>
     </div>
   );

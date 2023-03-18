@@ -8,6 +8,7 @@ export const Color = {
   Error: '#f9423a',
   Check: '#009736',
   Border: 'rgb(239, 243, 244)',
+  Border2: '#dadce0',
 };
 
 export const Font = {

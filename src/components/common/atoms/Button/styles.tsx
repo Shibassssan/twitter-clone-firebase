@@ -31,7 +31,7 @@ const getBorder = (type: BackgroundColorType) => {
     case 'secondary':
       return `2px solid ${Color.Primary}`;
     default:
-      return `2px solid ${Color.Black}`;
+      return `1px solid ${Color.Border2}`;
   }
 };
 
@@ -42,18 +42,23 @@ export const ButtonStyle = (type: BackgroundColorType) => css`
   font-size: 14px;
   overflow: hidden;
   position: relative;
-  border-radius: 8px;
+  border-radius: 20px;
   align-items: center;
   box-sizing: border-box;
+  height: 40px;
 
   & > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
     font-weight: 700;
     font-size: 14px;
     display: block;
     color: ${getColor(type)};
     text-align: center;
     width: 100%;
-    padding: 12px 0 12px;
     cursor: pointer;
     appearance: none;
     outline: none;

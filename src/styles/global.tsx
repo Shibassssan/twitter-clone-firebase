@@ -17,6 +17,12 @@ export const global = css`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    text-decoration: none;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 
   #__next {
