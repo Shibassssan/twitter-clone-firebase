@@ -5,7 +5,7 @@ import { Input } from "../common/atoms/Input";
 import { Button } from "../common/atoms/Button";
 import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
 import app, { provider } from "../../Firebase";
-import { UserContext, LoginContext } from "../../pages";
+import { UserContext } from "~/src/pages/_app";
 import { LoginStyle } from "./styles";
 import Cookie from 'js-cookie';
 import Link from 'next/link';
@@ -17,8 +17,7 @@ import { useRouter } from 'next/router';
 const auth = getAuth(app);
 
 export const Login: FC = () => {
-  const { setUserInfo } = useContext(UserContext);
-  const { setIsLogin } = useContext(LoginContext);
+  const { userInfo, setUserInfo } = useContext(UserContext);
 
   const {
     email,
@@ -36,12 +35,12 @@ export const Login: FC = () => {
   const loginWithGoogle = async () => {
     try {
       const { user } = await signInWithPopup(auth, provider);
-      setIsLogin(true);
       const { displayName, photoURL, getIdToken } = user;
       if (displayName)
         setUserInfo({
+          ...userInfo,
           name: displayName,
-          avator: photoURL || "",
+          photoUrl: photoURL || "",
         });
       const token = await getIdToken();
       Cookie.set(COOKIES.MEMBER, token);
