@@ -9,8 +9,8 @@ import {
 } from 'react';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
-import { Top as TopContainers } from '../components/Top';
-import { Login } from '../components/Login';
+import { Top as TopContainers } from '../components/containers/Top';
+import { Login } from '../components/containers/Login';
 import Cookies from 'js-cookie';
 import { COOKIES } from '~/src/define';
 import { UserContext } from './_app';

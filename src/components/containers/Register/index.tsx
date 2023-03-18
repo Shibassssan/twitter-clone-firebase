@@ -1,12 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useCallback, useContext, useState } from 'react';
 import { getAuth } from 'firebase/auth';
-import { Input } from '../common/atoms/Input';
-import { Button } from '../common/atoms/Button';
+import { Input } from '../../common/atoms/Input';
+import { Button } from '../../common/atoms/Button';
 import {
   createUserWithEmailAndPassword,
 } from 'firebase/auth';
-import app from '../../Firebase';
+import app from '../../../Firebase';
 
 import { style } from './styles';
 import { useForm } from '~/src/hooks/useForm';

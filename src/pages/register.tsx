@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { FC } from 'react';
-import { RegisterContainer } from '../components/Register';
+import { RegisterContainer } from '../components/containers/Register';
 
 /** 新規登録ページ */
 const Register: FC = () => {
