@@ -8,6 +8,7 @@ const getBackgroundColor = (type: BackgroundColorType) => {
     case 'primary':
       return Color.Primary;
     case 'secondary':
+      return Color.Black;
     default:
       return Color.White
   }
@@ -16,9 +17,8 @@ const getBackgroundColor = (type: BackgroundColorType) => {
 const getColor = (type: BackgroundColorType) => {
   switch (type) {
     case 'primary':
-      return Color.White
-      case 'secondary':
-      return Color.Primary;
+    case 'secondary':
+      return Color.White;
     default:
       return Color.Black;
   }
@@ -27,9 +27,9 @@ const getColor = (type: BackgroundColorType) => {
 const getBorder = (type: BackgroundColorType) => {
   switch (type) {
     case 'primary':
-      return 'none';
     case 'secondary':
-      return `2px solid ${Color.Primary}`;
+      return 'none';
+      // return `2px solid ${Color.Primary}`;
     default:
       return `1px solid ${Color.Border2}`;
   }
