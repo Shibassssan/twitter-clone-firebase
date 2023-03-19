@@ -3,6 +3,7 @@ export const Color = {
   White: '#fff',
   White2: '#536471',
   PreWhite: 'rgb(83, 100, 113)',
+  Gray: 'rgb(207, 217, 222)',
   Black: '#000',
   Black2: 'rgb(15, 20, 25)',
   Error: '#f9423a',
@@ -13,7 +14,10 @@ export const Color = {
 
 export const Font = {
   Size: {
+    small1: 12,
+    small2: 13,
     Default: 14,
+    Big1: 16,
   },
   Weight: {
     Bold: 700,
