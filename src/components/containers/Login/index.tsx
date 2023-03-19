@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useCallback, useContext, useState } from "react";
-import { getAuth } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { Input } from "~/src/components/common/atoms/Input";
 import { Button } from '~/src/components/common/atoms/Button';
 import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
@@ -34,18 +34,22 @@ export const Login: FC = () => {
 
   const loginWithGoogle = async () => {
     try {
-      const { user } = await signInWithPopup(auth, provider);
-      const { displayName, photoURL, getIdToken } = user;
+      const result = await signInWithPopup(auth, provider);
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential?.idToken;
+      if(!token) throw new Error('認証に失敗しました!');
+      const { displayName, photoURL, uid } = result.user;
       if (displayName)
         setUserInfo({
-          ...userInfo,
+          userId: uid,
           name: displayName,
           photoUrl: photoURL || "",
+          isLogin: true,
         });
-      const token = await getIdToken();
       Cookie.set(COOKIES.MEMBER, token);
     } catch (error) {
       console.error("error", error);
+      throw new Error('認証に失敗しました!')
     }
   };
 
