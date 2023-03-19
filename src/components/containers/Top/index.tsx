@@ -23,7 +23,7 @@ import {
 import Cookies from 'js-cookie';
 import { COOKIES } from '~/src/define';
 import { TopStyle } from './style';
-import { UserContext } from '~/src/pages/_app'
+import { UserContext } from '~/src/pages/_app';
 import { TweetCard } from '~/src/components/common/organisms/TweetCard';
 
 type Tweets = {
@@ -36,7 +36,6 @@ const auth = getAuth(app);
 
 export const Top: FC = () => {
   const { userInfo, setUserInfo } = useContext(UserContext);
-  const { setIsLogin } = useContext(LoginContext);
 
   const [text, setText] = useState('');
   const onChangeText = useCallback(
@@ -77,9 +76,10 @@ export const Top: FC = () => {
       await signOut(auth);
       setUserInfo({
         name: '',
-        avator: '',
+        photoUrl: '',
+        isLogin: false,
+        userId: '',
       });
-      setIsLogin(false);
       Cookies.remove(COOKIES.MEMBER)
     } catch (error) {
       console.error('error', error);

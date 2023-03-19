@@ -10,14 +10,19 @@ import '../Firebase';
 import { Global } from '@emotion/react';
 
 const defaultUserInfo = {
-  userId: null,
+  userId: undefined,
   name: '',
   photoUrl: '',
   isLogin: false,
 };
 
 type UserContextType = {
-  userInfo: typeof defaultUserInfo;
+  userInfo: {
+    userId: string | undefined;
+    name: string;
+    photoUrl: string;
+    isLogin: boolean;
+  };
   setUserInfo: (userInfo: UserContextType['userInfo']) => void;
 };
 

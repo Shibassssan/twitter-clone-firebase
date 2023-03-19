@@ -1,12 +1,13 @@
 /** @jsxImportSource @emotion/react */
-import { FC, useCallback, useState } from 'react';
+import { FC, useCallback, useState, useContext } from 'react';
 import { cx } from '@emotion/css';
 import { AccordionIcon } from '~/src/assets/icon/Accordion';
-import avator from 'src/components/assets/images/avator.png';
+import avator from '~/src/assets/images/avator.png';
 import { style } from './styles';
 import Image from 'next/image';
 import { MoreIcon } from '~/src/assets/icon/MoreIcon';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { UserContext } from '~/src/pages/_app';
 
 // userIdをグローバルに状態管理したい
 // user情報全般グローバルに管理したいので、状態管理ライブラリを入れた方が良い
@@ -16,9 +17,11 @@ export const SideMenu: FC<{
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }> = ({ isOpen, setIsOpen }) => {
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
+  const { userInfo } = useContext(UserContext);
+
   return (
-    <div className={cx('sideMenu', { 'open': isOpen})} css={style}>
-      <nav className={cx({ 'open': isOpen})} >
+    <div className={cx('sideMenu', { open: isOpen })} css={style}>
+      <nav className={cx({ open: isOpen })}>
         <section className="navigationHeader">
           <div>
             <h2>アカウント情報</h2>
@@ -37,7 +40,12 @@ export const SideMenu: FC<{
           <div className="accountInfo">
             <div className="accountImage">
               {/* TODO ユーザー画像に切り替える */}
-              <Image width={38} height={38} src={avator} alt={'ユーザー画像'} />
+              <Image
+                width={38}
+                height={38}
+                src={userInfo.photoUrl || avator}
+                alt={'ユーザー画像'}
+              />
               <div className="otherAccounts">
                 <Image
                   width={30}
@@ -51,8 +59,8 @@ export const SideMenu: FC<{
               </div>
             </div>
             <div className="loginUser">
-              <div className="loginUserName">ほげ</div>
-              <div className="loginUserId">@testhoge123</div>
+              <div className="loginUserName">{userInfo.name}</div>
+              <div className="loginUserId">{userInfo.userId}</div>
             </div>
             <div className="followInfo">
               <div className="following">
@@ -65,7 +73,9 @@ export const SideMenu: FC<{
           </div>
           <ul className="lists">
             <li className="">
-              <div>プロフィール</div>
+              <Link href={'/profile/:id'}>
+                <div>プロフィール</div>
+              </Link>
             </li>
             <li className="">
               <div>Twitter Blue</div>
@@ -81,12 +91,15 @@ export const SideMenu: FC<{
             </li>
           </ul>
           <div className="accordion">
-            <div className={cx('setting', {'open': isAccordionOpen })} onClick={() => setIsAccordionOpen((prev) => !prev)}>
+            <div
+              className={cx('setting', { open: isAccordionOpen })}
+              onClick={() => setIsAccordionOpen((prev) => !prev)}
+            >
               <div>設定とサポート</div>
               <AccordionIcon />
             </div>
             {isAccordionOpen && (
-              <section className='settingDetail'>
+              <section className="settingDetail">
                 <div>設定とプライバシー</div>
                 <div>ヘルプセンター</div>
                 <div>データセーバー</div>
