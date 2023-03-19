@@ -73,7 +73,7 @@ export const SideMenu: FC<{
           </div>
           <ul className="lists">
             <li className="">
-              <Link href={'/profile/:id'}>
+              <Link href={`/profile/${userInfo.userId}`}>
                 <div>プロフィール</div>
               </Link>
             </li>
