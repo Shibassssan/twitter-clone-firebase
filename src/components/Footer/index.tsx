@@ -1,10 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useCallback, useState } from 'react';
+import Link from 'next/link';
 import { footerStyle } from './style';
-import { Home as HomeIcon } from '../../assets/icon/Home';
-import { Search as SearchIcon } from '../../assets/icon/Search';
-import { Notice as NoticeIcon } from '../../assets/icon/Notice';
-import { Mail as MailIcon } from '../../assets/icon/Mail';
+import { Home as HomeIcon } from '~/src/assets/icon/Home';
+import { Search as SearchIcon } from '~/src/assets/icon/Search';
+import { Notice as NoticeIcon } from '~/src/assets/icon/Notice';
+import { Mail as MailIcon } from '~/src/assets/icon/Mail';
 
 
 export const Footer: FC = () => {
@@ -13,16 +14,24 @@ export const Footer: FC = () => {
       <nav>
         {/* TODO リンクに置き換える */}
         <div>
-          <HomeIcon />
+          <Link href={'/'} >
+            <HomeIcon />
+          </Link>
         </div>
         <div>
-          <SearchIcon />
+          <Link href={'/explore'}>
+            <SearchIcon />
+          </Link>
         </div>
         <div>
-          <NoticeIcon />
+          <Link href={'/notifications'} >
+            <NoticeIcon />
+          </Link>
         </div>
         <div>
-          <MailIcon />
+          <Link href={'/messages'}>
+            <MailIcon />
+          </Link>
         </div>
       </nav>
     </footer>
