@@ -86,7 +86,19 @@ export const Top: FC = () => {
     }
   };
 
+  const getUserInfo = useCallback(() => {
+    const user = auth.currentUser;
+    if (!user) return;
+    setUserInfo({
+      userId: user.uid,
+      name: user.displayName || '',
+      photoUrl: user.photoURL || '',
+      isLogin: true,
+    })
+  }, []);
+
   useEffect(() => {
+    getUserInfo();
     getTweets();
   }, []);
 
