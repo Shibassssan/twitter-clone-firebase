@@ -2,8 +2,8 @@
 import { FC, useState, useCallback } from 'react';
 import { inputStyle } from './styles';
 import { cx } from '@emotion/css';
-import { AlertIcon } from '../../../assets/icon/AlertIcon';
-import { CheckIcon } from '../../../assets/icon/CheckIcon';
+import { AlertIcon } from '~/src/assets/icon/AlertIcon';
+import { CheckIcon } from '~/src/assets/icon/CheckIcon';
 
 export const Input: FC<{
   label: string;

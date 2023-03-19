@@ -1,10 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useCallback, useContext, useState } from "react";
 import { getAuth } from 'firebase/auth';
-import { Input } from "../../common/atoms/Input";
-import { Button } from "../../common/atoms/Button";
+import { Input } from "~/src/components/common/atoms/Input";
+import { Button } from '~/src/components/common/atoms/Button';
 import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
-import app, { provider } from "../../../Firebase";
+import app, { provider } from "~/src/Firebase";
 import { UserContext } from "~/src/pages/_app";
 import { LoginStyle } from "./styles";
 import Cookie from 'js-cookie';

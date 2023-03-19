@@ -6,7 +6,6 @@ import {
   useEffect,
   useContext,
 } from 'react';
-import { Button } from '../../common/atoms/Button';
 import {
   addDoc,
   getDocs,
@@ -16,7 +15,7 @@ import {
   doc,
   onSnapshot,
 } from 'firebase/firestore';
-import app, { db } from '../../../Firebase';
+import app, { db } from '~/src/Firebase';
 import {
   signOut,
   getAuth
@@ -24,7 +23,7 @@ import {
 import Cookies from 'js-cookie';
 import { COOKIES } from '~/src/define';
 import { TopStyle } from './style';
-import { UserContext, LoginContext } from '../../../pages'
+import { UserContext } from '~/src/pages/_app'
 import { TweetCard } from '~/src/components/common/organisms/TweetCard';
 
 type Tweets = {

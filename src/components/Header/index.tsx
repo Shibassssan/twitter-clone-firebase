@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useCallback, useState } from 'react';
 import { headerStyle } from './style';
-import { Logo as LogoIcon } from '../assets/icon/Logo';
+import { Logo as LogoIcon } from '../../assets/icon/Logo';
 import Image from 'next/image';
 import avator from 'src/components/assets/images/avator.png';
 import { SideMenu } from '../containers/SideMenu';

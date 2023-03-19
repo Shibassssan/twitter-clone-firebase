@@ -1,10 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useCallback, useState } from 'react';
 import { footerStyle } from './style';
-import { Home as HomeIcon } from '../assets/icon/Home';
-import { Search as SearchIcon } from '../assets/icon/Search';
-import { Notice as NoticeIcon } from '../assets/icon/Notice';
-import { Mail as MailIcon } from '../assets/icon/Mail';
+import { Home as HomeIcon } from '../../assets/icon/Home';
+import { Search as SearchIcon } from '../../assets/icon/Search';
+import { Notice as NoticeIcon } from '../../assets/icon/Notice';
+import { Mail as MailIcon } from '../../assets/icon/Mail';
 
 
 export const Footer: FC = () => {

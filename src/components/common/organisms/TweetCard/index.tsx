@@ -2,10 +2,10 @@ import { FC } from 'react';
 import Image from 'next/image';
 import avator from 'src/components/assets/images/avator.png';
 import { TweetCardStyle } from './styles';
-import { FavoriteIcon } from '~/src/components/assets/icon/Favorite';
-import { CommentIcon } from '~/src/components/assets/icon/Comment';
-import { ReTweetIcon } from '~/src/components/assets/icon/ReTweet';
-import { ShareIcon } from '~/src/components/assets/icon/Share';
+import { FavoriteIcon } from '~/src/assets/icon/Favorite';
+import { CommentIcon } from '~/src/assets/icon/Comment';
+import { ReTweetIcon } from '~/src/assets/icon/ReTweet';
+import { ShareIcon } from '~/src/assets/icon/Share';
 
 export const TweetCard: FC<{
   userName: string;

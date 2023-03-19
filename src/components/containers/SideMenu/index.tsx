@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useCallback, useState } from 'react';
 import { cx } from '@emotion/css';
-import { AccordionIcon } from '../../assets/icon/Accordion';
+import { AccordionIcon } from '~/src/assets/icon/Accordion';
 import avator from 'src/components/assets/images/avator.png';
 import { style } from './styles';
 import Image from 'next/image';
-import { MoreIcon } from '../../assets/icon/MoreIcon';
+import { MoreIcon } from '~/src/assets/icon/MoreIcon';
 import { useRouter } from 'next/router';
 
 // userIdをグローバルに状態管理したい
