@@ -3,6 +3,7 @@ import { Color } from '~/src/Style';
 
 
 export const footerStyle = css`
+  position: relative;
   > nav {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -19,4 +20,9 @@ export const footerStyle = css`
       }
     }
   }
+`;
+
+
+export const linkButtonStickyStyle = css`
+  position: sticky;
 `;
