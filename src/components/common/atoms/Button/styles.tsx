@@ -40,29 +40,25 @@ export const ButtonStyle = (type: BackgroundColorType) => css`
   background-color: ${getBackgroundColor(type)};
   padding: 0;
   font-size: 14px;
-  overflow: hidden;
   position: relative;
   border-radius: 20px;
   align-items: center;
   box-sizing: border-box;
-  height: 40px;
+  min-height: 30px;
+  cursor: pointer;
+  appearance: none;
+  overflow: hidden;
+  outline: none;
+  width: 100%;
+  display: flex;
+  justify-content:center;
 
-  & > button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    height: 100%;
-    font-weight: 700;
-    font-size: 14px;
-    display: block;
+  & .label {
+    line-height: 19px;
     color: ${getColor(type)};
-    text-align: center;
-    width: 100%;
-    cursor: pointer;
-    appearance: none;
-    outline: none;
-    background: none;
-    border: none;
+    padding: 0 10px;
+    min-height: inherit;
+    display: flex;
+    align-items: center;
   }
 `;

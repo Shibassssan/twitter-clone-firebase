@@ -9,15 +9,16 @@ export const Button: FC<{
   disabled?: boolean;
 }> = ({ label, onClick = () => {}, disabled = false, type }) => {
   return (
-    <div css={ButtonStyle(type)}>
-      <button
-        className="button"
-        type="submit"
-        onClick={onClick}
-        disabled={disabled}
-      >
+    <button
+      className="button"
+      type="submit"
+      onClick={onClick}
+      disabled={disabled}
+      css={ButtonStyle(type)}
+    >
+      <div className="label">
         <span>{label}</span>
-      </button>
-    </div>
+      </div>
+    </button>
   );
 };
