@@ -3,14 +3,23 @@ import { FC, useCallback, useState, useContext } from 'react';
 import { cx } from '@emotion/css';
 import { AccordionIcon } from '~/src/assets/icon/Accordion';
 import avator from '~/src/assets/images/avator.png';
-import { style } from './styles';
+import { style, SideMenuListStyle } from './styles';
 import Image from 'next/image';
 import { MoreIcon } from '~/src/assets/icon/MoreIcon';
 import Link from 'next/link';
 import { UserContext } from '~/src/pages/_app';
+import { PersonIcon } from '~/src/assets/icon/Person';
+import { TwitterBlueIcon } from '~/src/assets/icon/TwitterBlue';
+import { TopicIcon } from '~/src/assets/icon/Topic';
+import { ListIcon } from '~/src/assets/icon/List';
+import { BookmarkIcon } from '~/src/assets/icon/BookMark';
+import { TwitterCircleIcon } from '~/src/assets/icon/TwitterCircle';
 
-// userIdをグローバルに状態管理したい
-// user情報全般グローバルに管理したいので、状態管理ライブラリを入れた方が良い
+
+
+/**
+ * @TODO SideMenu component分割しておく
+ */
 
 export const SideMenu: FC<{
   isOpen: boolean,
@@ -71,22 +80,27 @@ export const SideMenu: FC<{
               </div>
             </div>
           </div>
-          <ul className="lists">
+          <ul className="lists" css={SideMenuListStyle}>
             <li className="">
               <Link href={`/profile/${userInfo.userId}`}>
+                <PersonIcon />
                 <div>プロフィール</div>
               </Link>
             </li>
-            <li className="">
+            <li className="twitterBlue">
+              <TwitterBlueIcon />
               <div>Twitter Blue</div>
             </li>
             <li className="">
+              <TopicIcon />
               <div>トピック</div>
             </li>
             <li className="">
+              <BookmarkIcon />
               <div>ブックマーク</div>
             </li>
             <li className="">
+              <TwitterCircleIcon />
               <div>Twitter サークル</div>
             </li>
           </ul>

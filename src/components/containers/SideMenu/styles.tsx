@@ -143,15 +143,6 @@ export const style = css`
     }
   }
 
-  & .lists {
-    border-bottom: 1px solid ${Color.Border};
-    > li {
-      padding: 15px;
-      font-size: 19px;
-      font-weight: ${Font.Weight.Bold};
-    }
-  }
-
   & .setting {
     padding: 15px;
     display: flex;
@@ -177,5 +168,31 @@ export const style = css`
         font-size: ${Font.Size.Default}px;
       }
     }
+  }
+`;
+
+export const SideMenuListStyle = css`
+  border-bottom: 1px solid ${Color.Border};
+  > li {
+    padding: 15px;
+    font-size: 19px;
+    font-weight: ${Font.Weight.Bold};
+    display: flex;
+
+    a {
+      display: flex;
+    }
+  }
+
+  & .twitterBlue {
+    svg {
+      fill: ${Color.Primary};
+    }
+  }
+
+  svg {
+    width: 23px;
+    height: 23px;
+    margin-right: 23px;
   }
 `;
