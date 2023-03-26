@@ -1,6 +1,6 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import Image from 'next/image';
-import avator from 'src/components/assets/images/avator.png';
+import { UserContext } from '~/src/pages/_app';
 import { TweetCardStyle } from './styles';
 import { FavoriteIcon } from '~/src/assets/icon/Favorite';
 import { CommentIcon } from '~/src/assets/icon/Comment';
@@ -10,11 +10,12 @@ import { ShareIcon } from '~/src/assets/icon/Share';
 export const TweetCard: FC<{
   userName: string;
   text: string
-}> = ({userName, text}) => {
+}> = ({ userName, text }) => {
+  const { userInfo } = useContext(UserContext);
   return (
     <article css={TweetCardStyle}>
       <div className=''>
-        <Image width={46} height={46} src={avator} alt={'ユーザー画像'} />
+        <Image width={46} height={46} src={userInfo.photoUrl} alt={'ユーザー画像'} />
       </div>
       <div>
         <div className='user'>

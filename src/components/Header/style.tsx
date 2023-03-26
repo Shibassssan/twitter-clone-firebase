@@ -19,6 +19,10 @@ export const headerStyle = css`
       height: inherit;
       display: flex;
       align-items: center;
+
+      img {
+        border-radius: 50%;
+      }
     }
   }
 

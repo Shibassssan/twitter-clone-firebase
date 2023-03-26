@@ -8,6 +8,10 @@ export const TweetCardStyle = css`
   grid-template-columns: 1fr 5fr;
   font-size: 14px;
 
+  img {
+    border-radius: 50%;
+  }
+
   & .user {
     display: flex;
     &Name {
