@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { Font } from '../Style';
 
 export const global = css`
   @font-face {
@@ -18,6 +19,8 @@ export const global = css`
     margin: 0;
     padding: 0;
     text-decoration: none;
+    list-style: none;
+    font-size: ${Font.Size.Default}px;
   }
 
   a {
