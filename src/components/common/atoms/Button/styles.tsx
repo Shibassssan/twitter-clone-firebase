@@ -51,7 +51,11 @@ export const ButtonStyle = (type: BackgroundColorType) => css`
   outline: none;
   width: 100%;
   display: flex;
-  justify-content:center;
+  justify-content: center;
+
+  &:disabled {
+    opacity: 0.5;
+  }
 
   & .label {
     line-height: 19px;
