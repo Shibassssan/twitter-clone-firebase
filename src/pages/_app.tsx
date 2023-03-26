@@ -1,16 +1,18 @@
-import {
-  createContext,
-  useState,
-  useContext,
-} from 'react';
+/** @jsxImportSource @emotion/react */
+import { NextPage } from 'next';
+import { createContext, useState, useContext, useEffect, useCallback } from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import app from '~/src/Firebase';
+import { getAuth } from 'firebase/auth';
 import { global } from '../styles/global';
 import '../Firebase';
 import { Global } from '@emotion/react';
 
+const auth = getAuth(app);
+
 const defaultUserInfo = {
-  userId: undefined,
+  userId: '',
   name: '',
   photoUrl: '',
   isLogin: false,
@@ -18,7 +20,7 @@ const defaultUserInfo = {
 
 type UserContextType = {
   userInfo: {
-    userId: string | undefined;
+    userId: string;
     name: string;
     photoUrl: string;
     isLogin: boolean;
@@ -31,8 +33,28 @@ export const UserContext = createContext<UserContextType>({
   setUserInfo: ({}) => {},
 });
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const MyApp:NextPage<AppProps> = ({ Component, pageProps }: AppProps) => {
   const [userInfo, setUserInfo] = useState(defaultUserInfo);
+
+  const getUserInfo = useCallback(() => {
+    const user = auth.currentUser;
+    if (!user) return;
+    setUserInfo({
+      userId: user.uid,
+      name: user.displayName || '',
+      photoUrl: user.photoURL || '',
+      isLogin: true,
+    });
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setTimeout(() => {
+        getUserInfo();
+      }, 1000);
+    }
+  }, []);
+
 
   return (
     <>
