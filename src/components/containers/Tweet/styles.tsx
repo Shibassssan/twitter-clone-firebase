@@ -42,6 +42,10 @@ export const TweetStyle = css`
     margin-right: 10px;
     padding-top: 4px;
     width: auto;
+
+    > img {
+      border-radius: 50%;
+    }
   }
 
   & .tweetWrap {

@@ -64,7 +64,8 @@ export const Login: FC = () => {
       // topに遷移
       router.push('/');
     } catch (error) {
-      console.error('error', error)
+      console.error('error', error);
+      throw new Error('メールアドレスによるログインが失敗しました!');
     }
   }, [email, password]);
 

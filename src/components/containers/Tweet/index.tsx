@@ -2,6 +2,7 @@ import {
   FC,
   useCallback,
   useContext,
+  useEffect,
   useState,
 } from 'react';
 import {
@@ -13,6 +14,7 @@ import {
   doc,
   onSnapshot,
 } from 'firebase/firestore';
+import app, { db } from '~/src/Firebase';
 import { style, TweetStyle } from './styles';
 import { ArrowIcon } from '~/src/assets/icon/Arrow';
 import { Button } from '~/src/components/common/atoms/Button';
@@ -20,7 +22,6 @@ import { useRouter } from 'next/router';
 import { UserContext } from '~/src/pages/_app';
 
 // icon
-import { SmileIcon } from '~/src/assets/icon/Smile';
 import { GifIcon } from '~/src/assets/icon/Gif';
 import { LocationIcon } from '~/src/assets/icon/Location';
 import { EarthIcon } from '~/src/assets/icon/Earth';
@@ -34,7 +35,7 @@ import { AccordionIcon } from '~/src/assets/icon/Accordion';
 
 export const TweetContainer: FC = () => {
   const router = useRouter();
-  const { userInfo, setUserInfo } = useContext(UserContext);
+  const { userInfo } = useContext(UserContext);
 
   const [text, setText] = useState('');
   const onChangeText = useCallback(
@@ -43,12 +44,12 @@ export const TweetContainer: FC = () => {
   );
 
   const sendTweet = useCallback(async () => {
-    if (!text) return;
+    if (!text || !userInfo.name) return;
     try {
       const postCollection = collection(db, 'posts');
       const result = await addDoc(postCollection, {
         // id: postCollection.id,
-        userName: 'hoge3',
+        userName: userInfo.name,
         tweet: text,
         timestamp: serverTimestamp(),
       });
@@ -66,7 +67,7 @@ export const TweetContainer: FC = () => {
         </div>
         <div></div>
         <div className="tweetButton">
-          <Button label={'ツイートする'} type="primary" />
+          <Button label={'ツイートする'} type="primary" onClick={sendTweet} disabled={!text} />
         </div>
       </section>
       <section className="body">

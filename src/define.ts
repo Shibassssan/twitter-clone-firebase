@@ -1,3 +1,7 @@
+/**
+ * 定数をまとめた定義ファイル
+ */
+
 export const ERROR_MESSAGE = {
   REQUIRE: '必須項目です。',
   EMAIL_FORMAT_ERROR: 'メールアドレスの形式で入力してください。',
@@ -9,7 +13,9 @@ export const ERROR_MESSAGE = {
   SYMBOL_REQUIRED: '記号を1文字以上含めてください。'
 } as const;
 
-
+/**
+ * Form等で使用する正規表現のパターン
+*/
 export const Regex = {
   emailFormat: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
   containsAlphanumeric: /^[a-zA-Z0-9!-/:-@¥[-`{-~]+$/,
@@ -19,6 +25,11 @@ export const Regex = {
   containsSymbol: /[-!"#$%&'()*+,./:;<=>?@[\\\]^_`{|}~]+/,
 };
 
+/** */
 export const COOKIES = {
   MEMBER: 'member'
 }
+
+export const Href = {
+  Tweet: '/compose/tweet'
+} as const;
