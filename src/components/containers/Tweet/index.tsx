@@ -54,6 +54,7 @@ export const TweetContainer: FC = () => {
         timestamp: serverTimestamp(),
       });
       console.log('result', result);
+      router.push('/');
     } catch (error) {
       console.log('error!!!!!', error);
     }
