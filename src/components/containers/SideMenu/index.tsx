@@ -16,6 +16,48 @@ import { BookmarkIcon } from '~/src/assets/icon/BookMark';
 import { TwitterCircleIcon } from '~/src/assets/icon/TwitterCircle';
 
 
+const SideMenuList: FC<{
+  userId: string;
+}> = ({
+  userId
+}) => {
+  return (
+    <ul className="lists" css={SideMenuListStyle}>
+      <li className="">
+        <Link href={`/profile/${userId}`}>
+          <div className="profile">
+            <PersonIcon />
+            <div>プロフィール</div>
+          </div>
+        </Link>
+      </li>
+      <li>
+        <div className="twitterBlue">
+          <TwitterBlueIcon />
+          <div>Twitter Blue</div>
+        </div>
+      </li>
+      <li className="topic">
+        <div>
+          <TopicIcon />
+          <div>トピック</div>
+        </div>
+      </li>
+      <li className="bookmark">
+        <div>
+          <BookmarkIcon />
+          <div>ブックマーク</div>
+        </div>
+      </li>
+      <li className="circle">
+        <div>
+          <TwitterCircleIcon />
+          <div>Twitter サークル</div>
+        </div>
+      </li>
+    </ul>
+  );
+};
 
 /**
  * @TODO SideMenu component分割しておく
@@ -50,15 +92,15 @@ export const SideMenu: FC<{
             <div className="accountImage">
               {/* TODO ユーザー画像に切り替える */}
               <Image
-                width={38}
-                height={38}
+                width={40}
+                height={40}
                 src={userInfo.photoUrl || avator}
                 alt={'ユーザー画像'}
               />
               <div className="otherAccounts">
                 <Image
-                  width={30}
-                  height={30}
+                  width={32}
+                  height={32}
                   src={avator}
                   alt={'ユーザー画像'}
                 />
@@ -80,30 +122,7 @@ export const SideMenu: FC<{
               </div>
             </div>
           </div>
-          <ul className="lists" css={SideMenuListStyle}>
-            <li className="">
-              <Link href={`/profile/${userInfo.userId}`}>
-                <PersonIcon />
-                <div>プロフィール</div>
-              </Link>
-            </li>
-            <li className="twitterBlue">
-              <TwitterBlueIcon />
-              <div>Twitter Blue</div>
-            </li>
-            <li className="">
-              <TopicIcon />
-              <div>トピック</div>
-            </li>
-            <li className="">
-              <BookmarkIcon />
-              <div>ブックマーク</div>
-            </li>
-            <li className="">
-              <TwitterCircleIcon />
-              <div>Twitter サークル</div>
-            </li>
-          </ul>
+          <SideMenuList userId={userInfo.userId} />
           <div className="accordion">
             <div
               className={cx('setting', { open: isAccordionOpen })}

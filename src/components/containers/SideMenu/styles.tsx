@@ -88,6 +88,9 @@ export const style = css`
     & .accountImage {
       display: flex;
       justify-content: space-between;
+      > img {
+        border-radius: 50%;
+      }
     }
 
     & .otherAccounts {
@@ -174,13 +177,35 @@ export const style = css`
 export const SideMenuListStyle = css`
   border-bottom: 1px solid ${Color.Border};
   > li {
-    padding: 15px;
-    font-size: 19px;
+    font-size: 20px;
     font-weight: ${Font.Weight.Bold};
     display: flex;
-
+    align-items: center;
+    flex: 1;
     a {
       display: flex;
+      font-size: inherit;
+      flex: 1;
+      padding: 15px;
+    }
+    > div {
+      font-size: inherit;
+      padding: 15px;
+      display: flex;
+      flex: 1;
+      > div {
+        font-size: inherit;
+      }
+    }
+  }
+
+  & .profile {
+    display: flex;
+    font-size: inherit;
+    align-items: center;
+    flex: 1;
+    > div {
+      font-size: inherit;
     }
   }
 
@@ -191,8 +216,8 @@ export const SideMenuListStyle = css`
   }
 
   svg {
-    width: 23px;
-    height: 23px;
-    margin-right: 23px;
+    width: 24px;
+    height: 24px;
+    margin-right: 24px;
   }
 `;
