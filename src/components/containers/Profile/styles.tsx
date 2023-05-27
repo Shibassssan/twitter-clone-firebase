@@ -60,7 +60,9 @@ export const style = css`
 
         & .followButton {
           min-width: 102px;
-          font-weight: ${Font.Weight.Bold};
+          > button {
+            font-weight: ${Font.Weight.Bold};
+          }
         }
       }
 
