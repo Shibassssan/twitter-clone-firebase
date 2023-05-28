@@ -68,7 +68,12 @@ export const TweetContainer: FC = () => {
         </div>
         <div></div>
         <div className="tweetButton">
-          <Button label={'ツイートする'} type="primary" onClick={sendTweet} disabled={!text} />
+          <Button
+            label={'ツイートする'}
+            bgType="primary"
+            onClick={sendTweet}
+            disabled={!text}
+          />
         </div>
       </section>
       <section className="body">
@@ -83,30 +88,30 @@ export const TweetContainer: FC = () => {
           </div>
           <div className="tweetWrap">
             <div className="selectPublic">
-              <div className='labelWrap'>
-                <div className='label'>
+              <div className="labelWrap">
+                <div className="label">
                   <span>全員</span>
                   <AccordionIcon />
                 </div>
               </div>
             </div>
-            <div className='text'>
+            <div className="text">
               <textarea
                 name="ツイート本文"
-                placeholder='いまどうしてる？'
-                aria-label='テキストをツイート'
-                autoComplete='on'
-                autoCorrect='on'
+                placeholder="いまどうしてる？"
+                aria-label="テキストをツイート"
+                autoComplete="on"
+                autoCorrect="on"
                 spellCheck
-                dir='auto'
+                dir="auto"
                 onChange={(e) => onChangeText(e)}
               />
             </div>
-            <div className='commentTarget'>
+            <div className="commentTarget">
               <EarthIcon />
               <div>全員に返信できます</div>
             </div>
-            <div className='toolBar'>
+            <div className="toolBar">
               <ul>
                 <li>
                   <div>

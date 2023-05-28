@@ -13,6 +13,7 @@ const auth = getAuth();
 
 export const ProfileContainer: FC = () => {
   const { userInfo, setUserInfo } = useContext(UserContext);
+  const [user, setUser] = useState({});
   const router = useRouter();
 
   const isMe = useMemo(
@@ -62,13 +63,13 @@ export const ProfileContainer: FC = () => {
               {/* 自分の場合はプロフィール編集ボタンに変える */}
               {isMe ? (
                 <Button
-                  type={'other'}
+                  bgType={'other'}
                   label="プロフィール編集"
                   buttonType="button"
                 />
               ) : (
                 <Button
-                  type={'secondary'}
+                  bgType={'secondary'}
                   label="フォロー"
                   buttonType="button"
                 />

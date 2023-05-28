@@ -4,17 +4,18 @@ import { ButtonStyle, type BackgroundColorType } from './styles';
 
 export const Button: FC<{
   label: string;
-  type: BackgroundColorType;
+  bgType: BackgroundColorType;
+  buttonType?: 'submit' | 'button'
   onClick?: () => void;
   disabled?: boolean;
-}> = ({ label, onClick = () => {}, disabled = false, type }) => {
+}> = ({ label, onClick = () => {}, disabled = false, bgType, buttonType = 'submit' }) => {
   return (
     <button
       className="button"
-      type="submit"
+      type={buttonType}
       onClick={onClick}
       disabled={disabled}
-      css={ButtonStyle(type)}
+      css={ButtonStyle(bgType)}
     >
       <div className="label">
         <span>{label}</span>

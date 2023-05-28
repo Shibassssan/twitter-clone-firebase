@@ -72,7 +72,7 @@ export const RegisterContainer: FC = () => {
           />
         </div>
         <div>
-          <Button label={'登録'} onClick={onRegister} type={'primary'} />
+          <Button label={'登録'} onClick={onRegister} bgType={'primary'} />
         </div>
       </section>
     </div>

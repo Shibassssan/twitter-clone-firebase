@@ -77,7 +77,7 @@ export const Login: FC = () => {
       <section className="emailLogin">
         <div>
           <Input
-            label={"メールアドレス"}
+            label={'メールアドレス'}
             value={email}
             onChangeCallback={onEmailChange}
             isError={isEmailError}
@@ -86,7 +86,7 @@ export const Login: FC = () => {
         </div>
         <div>
           <Input
-            label={"パスワード"}
+            label={'パスワード'}
             value={password}
             onChangeCallback={onPasswordChange}
             isError={isPasswordError}
@@ -94,31 +94,29 @@ export const Login: FC = () => {
           />
         </div>
         <div>
-          <Button label={"ログイン"} onClick={login} type={"primary"} />
+          <Button label={'ログイン'} onClick={login} bgType={'primary'} />
         </div>
         <div></div>
       </section>
       <div className="googleLogin">
         <Button
-          label={"Googleでログイン"}
+          label={'Googleでログイン'}
           onClick={loginWithGoogle}
-          type={"other"}
+          bgType={'other'}
         />
       </div>
       <div className="passwordReset">
         <Button
-          label={"パスワードを忘れた場合はこちら"}
+          label={'パスワードを忘れた場合はこちら'}
           onClick={() => {}}
-          type={"other"}
+          bgType={'other'}
         />
       </div>
       <div className="registerLink">
         <div>
           アカウントをお持ちでない場合は
           <span>
-            <Link href='/register'>
-              登録
-            </Link>
+            <Link href="/register">登録</Link>
           </span>
         </div>
       </div>
