@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { FC, useCallback, useState, useEffect, useContext } from 'react';
+import { FC, useCallback, useState, useEffect, useContext, useMemo } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { UserContext } from '~/src/pages/_app';
@@ -14,6 +14,11 @@ const auth = getAuth();
 export const ProfileContainer: FC = () => {
   const { userInfo, setUserInfo } = useContext(UserContext);
   const router = useRouter();
+
+  const isMe = useMemo(
+    () => userInfo.userId === auth.currentUser?.uid,
+    [userInfo.userId]
+  );
 
   const updateUserInfo = useCallback(() => {
     const user = auth.currentUser;
@@ -54,12 +59,25 @@ export const ProfileContainer: FC = () => {
               />
             </div>
             <div className="followButton">
-              <Button type={'secondary'} label="フォロー" />
+              {/* 自分の場合はプロフィール編集ボタンに変える */}
+              {isMe ? (
+                <Button
+                  type={'other'}
+                  label="プロフィール編集"
+                  buttonType="button"
+                />
+              ) : (
+                <Button
+                  type={'secondary'}
+                  label="フォロー"
+                  buttonType="button"
+                />
+              )}
             </div>
           </div>
           <div className="user">
-            <div className='userName'>{userInfo.name}</div>
-            <div className='userId'>@{userInfo.userId}</div>
+            <div className="userName">{userInfo.name}</div>
+            <div className="userId">@{userInfo.userId}</div>
           </div>
           <div className="contentsText">
             {/* @TODO ここの部分をAPIから取得できるようにしておく */}
@@ -69,19 +87,23 @@ export const ProfileContainer: FC = () => {
             <br />
             フロントエンドエンジニアをやってます。 Reactが好きです。
           </div>
-          <div className='annotation'>
+          <div className="annotation">
             <ScheduleIcon />
             <p>2023年3月からTwitterを利用しています。</p>
           </div>
           <div className="followInfo">
-            <div className=''><span>1000</span>フォロー中</div>
-            <div className=''><span>1000</span>フォロワー</div>
+            <div className="">
+              <span>1000</span>フォロー中
+            </div>
+            <div className="">
+              <span>1000</span>フォロワー
+            </div>
           </div>
         </div>
         <nav>
           <ul>
             <li>
-              <div className='active'>ツイート</div>
+              <div className="active">ツイート</div>
             </li>
             <li>
               <div>返信</div>
